@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
+
 import {
   Chart as ChartJS,
   LineElement,
@@ -123,45 +124,6 @@ const ChartComponent = ({ selectedRange, onRangeChange }) => {
               label: "Volume",
               type: "bar",
               data: volumes.map((d) => d.y),
-              backgroundColor: "#808080",
-              yAxisID: "y1",
-            },
-          ],
-        });
-
-        setChartData({
-          labels: prices.map((d) => d.x),
-          datasets: [
-            {
-              label: "Bitcoin Price",
-              data: prices.map((d) => d.y),
-              borderColor: "#4f46e5",
-              backgroundColor: (context) => {
-                const chart = context.chart;
-                const { ctx, chartArea } = chart;
-
-                if (!chartArea) {
-                  return null;
-                }
-                const gradient = ctx.createLinearGradient(
-                  0,
-                  0,
-                  0,
-                  chartArea.bottom
-                );
-                gradient.addColorStop(0, "rgba(79, 70, 229, 0.5)");
-                gradient.addColorStop(1, "rgba(79, 70, 229, 0)");
-
-                return gradient;
-              },
-              fill: true,
-              pointRadius: 0,
-              yAxisID: "y",
-            },
-            {
-              label: "Volume",
-              type: "bar",
-              data: volumes.map((d) => d.y),
               backgroundColor: "rgba(79, 70, 229, 0.2)",
               yAxisID: "y1",
             },
@@ -189,6 +151,8 @@ const ChartComponent = ({ selectedRange, onRangeChange }) => {
         borderRadius: 4,
         titleColor: "#ffffff",
         bodyColor: "#ffffff",
+        mode: "nearest",
+        intersect: false,
       },
       annotation: {
         annotations: {
@@ -255,7 +219,7 @@ const ChartComponent = ({ selectedRange, onRangeChange }) => {
         },
         beginAtZero: false,
         position: "right",
-        max: Math.max(...(chartData.datasets[1]?.data || [])) * 16,
+        max: Math.max(...(chartData.datasets[1]?.data || [])) * 4,
       },
     },
   };

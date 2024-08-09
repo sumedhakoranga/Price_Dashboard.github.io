@@ -44,7 +44,12 @@ const Dashboard = () => {
   return (
     <div style={{ padding: "20px" }}>
       <div style={{ textAlign: "left", marginBottom: "20px" }}>
-        <div style={{ fontSize: "36px", fontWeight: "bold", color: "#454242" }}>
+        <div
+          style={{
+            fontSize: "36px",
+            color: "#454242",
+          }}
+        >
           {totalValue ? `${totalValue} USD` : "Loading..."}
         </div>
         <div
