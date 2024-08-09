@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/Price_Dashboard.github.io/static/css/main.e6c13ad2.css",
-    "main.js": "/Price_Dashboard.github.io/static/js/main.19d4f07d.js",
+    "main.css": "/Price_Dashboard.github.io/static/css/main.9bc0babe.css",
+    "main.js": "/Price_Dashboard.github.io/static/js/main.b2d15322.js",
     "static/js/453.0da5b56f.chunk.js": "/Price_Dashboard.github.io/static/js/453.0da5b56f.chunk.js",
+    "static/media/CircularStd.ttf": "/Price_Dashboard.github.io/static/media/CircularStd.3fcb6535e39024a69e30.ttf",
     "index.html": "/Price_Dashboard.github.io/index.html",
-    "main.e6c13ad2.css.map": "/Price_Dashboard.github.io/static/css/main.e6c13ad2.css.map",
-    "main.19d4f07d.js.map": "/Price_Dashboard.github.io/static/js/main.19d4f07d.js.map",
+    "main.9bc0babe.css.map": "/Price_Dashboard.github.io/static/css/main.9bc0babe.css.map",
+    "main.b2d15322.js.map": "/Price_Dashboard.github.io/static/js/main.b2d15322.js.map",
     "453.0da5b56f.chunk.js.map": "/Price_Dashboard.github.io/static/js/453.0da5b56f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.19d4f07d.js"
+    "static/css/main.9bc0babe.css",
+    "static/js/main.b2d15322.js"
   ]
 }
