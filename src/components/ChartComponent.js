@@ -3,6 +3,7 @@ import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   LineElement,
+  BarElement,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -15,6 +16,7 @@ import axios from "axios";
 
 ChartJS.register(
   LineElement,
+  BarElement,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -58,6 +60,13 @@ const ChartComponent = ({ selectedRange, onRangeChange }) => {
         fill: true,
         pointRadius: 0,
       },
+      {
+        label: "Volume",
+        type: "bar",
+        data: [],
+        backgroundColor: "rgba(79, 70, 229, 0.2)",
+        yAxisID: "y1",
+      },
     ],
   });
 
@@ -70,17 +79,21 @@ const ChartComponent = ({ selectedRange, onRangeChange }) => {
 
       try {
         const response = await axios.get(url);
-        const data = response.data.prices.map((price) => ({
+        const prices = response.data.prices.map((price) => ({
           x: new Date(price[0]).toLocaleDateString(),
           y: price[1],
         }));
+        const volumes = response.data.total_volumes.map((volume) => ({
+          x: new Date(volume[0]).toLocaleDateString(),
+          y: volume[1],
+        }));
 
         setChartData({
-          labels: data.map((d) => d.x),
+          labels: prices.map((d) => d.x),
           datasets: [
             {
               label: "Bitcoin Price",
-              data: data.map((d) => d.y),
+              data: prices.map((d) => d.y),
               borderColor: "#4f46e5",
               backgroundColor: (context) => {
                 const chart = context.chart;
@@ -102,6 +115,53 @@ const ChartComponent = ({ selectedRange, onRangeChange }) => {
               },
               fill: true,
               pointRadius: 0,
+              yAxisID: "y",
+            },
+            {
+              label: "Volume",
+              type: "bar",
+              data: volumes.map((d) => d.y),
+              backgroundColor: "#808080",
+              yAxisID: "y1",
+            },
+          ],
+        });
+
+        setChartData({
+          labels: prices.map((d) => d.x),
+          datasets: [
+            {
+              label: "Bitcoin Price",
+              data: prices.map((d) => d.y),
+              borderColor: "#4f46e5",
+              backgroundColor: (context) => {
+                const chart = context.chart;
+                const { ctx, chartArea } = chart;
+
+                if (!chartArea) {
+                  return null;
+                }
+                const gradient = ctx.createLinearGradient(
+                  0,
+                  0,
+                  0,
+                  chartArea.bottom
+                );
+                gradient.addColorStop(0, "rgba(79, 70, 229, 0.5)");
+                gradient.addColorStop(1, "rgba(79, 70, 229, 0)");
+
+                return gradient;
+              },
+              fill: true,
+              pointRadius: 0,
+              yAxisID: "y",
+            },
+            {
+              label: "Volume",
+              type: "bar",
+              data: volumes.map((d) => d.y),
+              backgroundColor: "rgba(79, 70, 229, 0.2)",
+              yAxisID: "y1",
             },
           ],
         });
@@ -161,6 +221,20 @@ const ChartComponent = ({ selectedRange, onRangeChange }) => {
       x: {
         grid: {
           display: true,
+          drawBorder: false,
+          color: "#e5e7eb",
+          lineWidth: 2,
+          borderDash: [2, 2],
+        },
+        ticks: {
+          maxTicksLimit: 10,
+          maxRotation: 0,
+          minRotation: 0,
+        },
+      },
+      y: {
+        grid: {
+          display: false,
           borderDash: [2, 2],
           lineWidth: 1,
           color: "#d1d5db",
@@ -168,8 +242,9 @@ const ChartComponent = ({ selectedRange, onRangeChange }) => {
         ticks: {
           display: false,
         },
+        beginAtZero: false,
       },
-      y: {
+      y1: {
         grid: {
           display: false,
         },
@@ -177,6 +252,8 @@ const ChartComponent = ({ selectedRange, onRangeChange }) => {
           display: false,
         },
         beginAtZero: false,
+        position: "right",
+        max: Math.max(...(chartData.datasets[1]?.data || [])) * 16,
       },
     },
   };
