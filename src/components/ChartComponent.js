@@ -10,6 +10,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  BarController,
 } from "chart.js";
 import annotationPlugin from "chartjs-plugin-annotation";
 import axios from "axios";
@@ -17,6 +18,7 @@ import axios from "axios";
 ChartJS.register(
   LineElement,
   BarElement,
+  BarController,
   CategoryScale,
   LinearScale,
   PointElement,
