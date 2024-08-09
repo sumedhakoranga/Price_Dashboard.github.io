@@ -4,7 +4,7 @@
     <img src="chart.png" alt="Chart" style="border: 2px solid #ddd; border-radius: 8px; padding: 5px; width: 50%;">
   </div>
 
-
+## [Demo Link](https://sumedhakoranga.github.io/Price_Dashboard.github.io/)
 
 ## Overview
 
