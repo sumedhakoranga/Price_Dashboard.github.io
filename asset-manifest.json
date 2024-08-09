@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Price_Dashboard.github.io/static/css/main.e6c13ad2.css",
-    "main.js": "/Price_Dashboard.github.io/static/js/main.36ae4a0b.js",
+    "main.js": "/Price_Dashboard.github.io/static/js/main.c62e2ed7.js",
     "static/js/453.0da5b56f.chunk.js": "/Price_Dashboard.github.io/static/js/453.0da5b56f.chunk.js",
     "index.html": "/Price_Dashboard.github.io/index.html",
     "main.e6c13ad2.css.map": "/Price_Dashboard.github.io/static/css/main.e6c13ad2.css.map",
-    "main.36ae4a0b.js.map": "/Price_Dashboard.github.io/static/js/main.36ae4a0b.js.map",
+    "main.c62e2ed7.js.map": "/Price_Dashboard.github.io/static/js/main.c62e2ed7.js.map",
     "453.0da5b56f.chunk.js.map": "/Price_Dashboard.github.io/static/js/453.0da5b56f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.36ae4a0b.js"
+    "static/js/main.c62e2ed7.js"
   ]
 }
